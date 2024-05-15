@@ -1,7 +1,8 @@
+
 pipeline{
    agent any 
    tools{
-    maven "M2_HOME"
+    maven 'M2_HOME'
    }
    stages{
     stage("maven"){
@@ -11,8 +12,10 @@ pipeline{
     }
     stage('upload artifact'){
         steps{
-            sh 'curl -uadmin:AP8gcgmmset5jeYChTJYDN6XmDd -T \ target/bio*jar \ "http://ec2-35-174-208-32.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'
+            sh 'curl -uadmin:AP8gcgmmset5jeYChTJYDN6XmDd -T \
+            target/bio*.jar \
+            "http://ec2-35-174-208-32.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'
         }
     }
    }
-}   
+}
